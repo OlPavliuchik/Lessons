@@ -1,0 +1,44 @@
+class NoteBook:
+    unique_key=1
+    note=''
+    book = [None] * 20
+
+    def add_note(self, unique_key, note):
+        self.unique_key=unique_key
+        self.note=note
+        self.book[self.unique_key] = self.note
+
+    def get_note(self, unique_key):
+        return self.book[unique_key]
+
+    def get_notes(self):
+        return self.book
+
+    def remove_note(self, unique_key):
+        self.unique_key = unique_key
+        self.book[unique_key]=None
+        #self.book.remove(self.book[unique_key])
+
+notebook1 = NoteBook()
+
+notebook1.add_note(1,"A first note")
+notebook1.add_note(2,"A second bigger note")
+
+#print(notebook1.book)
+
+
+print(notebook1.get_note(2))  # should print "A second bigger note"
+
+notebook1.add_note(2, "A third much bigger note")
+
+print(notebook1.get_note(2))  # should print "A third much bigger note"
+
+print(notebook1.get_notes())  # should print ["A first note", "A second note of the second notebook"]
+
+print(notebook1.get_note(3))  # should print None
+
+notebook1.remove_note(2)
+
+print(notebook1.get_notes())  # should print ["A first note"]
+
+print(notebook1.get_note(2))  # should print None
